@@ -1,13 +1,14 @@
 import json
 import os
-
 import numpy as np
 import pandas as pd
-
 import requests
 from rauth import OAuth2Service
 from flask import Flask, Response, redirect, url_for, render_template, jsonify, session, request
+#can get rid of sqlalchemy if we dont implement any database storage
 from flask_sqlalchemy import SQLAlchemy
+#our own file imports
+from dicts import classdicts, specdicts, classdict, racedicts
 
 app = Flask(__name__)
 app.debug = True
@@ -17,6 +18,7 @@ tokens = {}
 client_id = 'a16a3fea45be4352916f9975f11b6803'
 client_secret = 'BtCHX7vGo2p7OSCQva70QN7GUCIme8pA'
 redirect_uri = 'http://127.0.0.1:5000/callback'
+
 oauth = OAuth2Service(name='oauth', client_id=client_id, client_secret=client_secret, access_token_url='https://us.battle.net/oauth/token',
                     authorize_url='https://us.battle.net/oauth/authorize', base_url='https://us.battle.net/')
 
@@ -32,8 +34,12 @@ def leaderboard():
     #session = oauth.get_session(tokens['community']) --- we could do easier calls on a session but i could not get it working well in local environment
     resp = requests.get(f"https://us.api.blizzard.com/wow/leaderboard/3v3?locale=en_US&access_token={tokens['community']}").json()
     df = pd.DataFrame(resp['rows'])
-    #print(df.to_json(orient='records')) #it works
-    return(df.to_json(orient='records'))
+
+    df.classId = [classdicts[x] for x in df.classId]
+    df.raceId = [racedicts[x] for x in df.raceId]
+    df.specId = [specdicts[x] for x in df.specId]
+    json_data = df.to_json(orient='records')
+    return(json_data)
 
 @app.route('/api_connect')
 def api_connect():
@@ -72,17 +78,6 @@ def get_profile_token():
     tokens['profile'] = resp
     print('PROFILE TOKEN:' + tokens['profile'])
     return('',200)
-
-'''
-def fetch_leaderboard(conn):
-    print('leaderboard func')
-    resp = requests.get('https://us.api.blizzard.com/wow/leaderboard/3v3?locale=en_US&access_token='+ session['community_token'])
-    resp=conn.get('/wow/leaderboard/3v3', params={'format':'json'})
-    print(resp.data.get_json())
-    df = pd.DataFrame(resp['rows'])
-    print(df.head())
-    return(df.to_json(orient='records'))
-'''
 
 if __name__ == "__main__":
     app.run(debug=True)  

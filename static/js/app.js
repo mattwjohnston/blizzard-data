@@ -7,7 +7,8 @@ window.onload = function start() {
 //calls the leaderboard route.  Anything that route's method returns, which be in the response.
 function leaderboard() {
     d3.json('/leaderboard').then((response) => response.json()).then((data) => {
-        document.getElementById('leaderboard').value = data //this isn't right i was just seeing what pulls over to the html
+        console.log(data);
+        document.getElementById('leaderboard').value = data; //this isn't right i was just seeing what pulls over to the html
     });
 }
 
