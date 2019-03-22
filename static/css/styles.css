@@ -3,6 +3,7 @@ body,
 header,
 .view {
     height: 100%;
+    background-color: rgb(41, 41, 41);
 }
 /* Navigation*/
 
@@ -22,12 +23,4 @@ header,
 
 .full-bg-img {
     color: #fff;
-}
-
-.view {
-    background: url("")no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
