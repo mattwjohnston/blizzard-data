@@ -18,7 +18,7 @@ app.config['SECRET_KEY']= os.urandom(24)
 tokens = {}
 client_id = 'a16a3fea45be4352916f9975f11b6803'
 client_secret = 'BtCHX7vGo2p7OSCQva70QN7GUCIme8pA'
-redirect_uri = 'http://127.0.0.1:5000/callback'
+redirect_uri = 'https://wowdata.herokuapp.com/callback'
 oauth = OAuth2Service(name='oauth', client_id=client_id, client_secret=client_secret, access_token_url='https://us.battle.net/oauth/token',
                     authorize_url='https://us.battle.net/oauth/authorize', base_url='https://us.battle.net/')
 #to pass objects between routes.
