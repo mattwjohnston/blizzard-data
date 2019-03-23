@@ -1,18 +1,20 @@
 //list of functions to call asap
 window.onload = function start() {
     leaderboard();
+    
 }
 var datas;
 function leaderboard() {
     d3.json('/leaderboard').then((data) => {
+        piechart();
         datas=data;
         character(datas);
-        piechart();
     });
 }
 
 function character(datas) {
     console.log('Character function');
+    $('#spinner2').hide()
      d3.select("#charactersection")
        .selectAll(".bio")
        .data(datas)
@@ -55,7 +57,10 @@ function piechart(classname='allclasses') {
             responsive: true,
             paper_bgcolor:'#272B30'
         };
+        $('#spinner').hide()
+        $('#spinner1').hide()
         Plotly.newPlot("pie", data1, layout1);
+        $('.card').show()
     });
     
 }  

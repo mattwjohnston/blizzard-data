@@ -20,41 +20,44 @@
 </head>
 
 <body>
-  <div class="container">
+  
     <div class="container">
       <div class="jumbotron flex">
         <h1 class="display-4">World of Warcraft </h1>
       </div>
     </div>
-
+    <div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" id="spinner" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-sm">
+        
+        <div class="col-5 text-center" style="display: inline;">
           <div id='pie'></div>
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+          <div class="spinner-border" id="spinner1" role="status">
+            <span class="sr-only align-center">Loading...</span>
           </div>
     
-          <p id='leaderboard'></p>
         </div>
-      <div class="col-sm">
-        <div class="card">
+      <div class="col" style="display: inline;">
+        <div class="card" style="display: none;">
           <!--https://developer.snapappointments.com/bootstrap-select/examples/ cool tweaks for these drop downs-->
-          <div class="card_body m-4">
-            <div class="row" align-items="center">
-              <select class="selectpicker" data-width='40%' id="classfilter">
+          <div class="card_body m-4 mt-10">
+              <select class="selectpicker mb-3" data-width='90%' id="classfilter">
                 <option value="all">All Classes</option>
                 {% for value in classdicts[1:] %}
                 <option value="{{ value }}">{{ value }}</option>
                 {% endfor %}
               </select>
-              <select class="selectpicker" id="racefilter" data-width='40%'data-live-search="true">
+              <select class="selectpicker mb-3" id="racefilter" data-width='90%' data-live-search="true">
                 <option value="all">All Races</option>
                 {% for value in racedicts[1:] %}
                 <option value="{{ value }}">{{ value }}</option>
                 {% endfor %}
               </select>
-            </div>
-            <select class="selectpicker" id="specfilter" data-width='auto' data-live-search="true">
+            <select class="selectpicker mb-3" id="specfilter" data-width='90%' data-live-search="true">
               <option value="all">All Specs</option>
               {% for value in specdicts[1:] %}
               <option value="{{ value }}">{{ value }}</option>
@@ -63,7 +66,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm">
+      <div class="col-4">
+          <div  class="spinner-border" id="spinner2" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
                 <div id="charactersection">
                 </div>
       </div>
