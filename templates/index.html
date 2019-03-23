@@ -24,16 +24,12 @@
     <div class="container">
       <div class="jumbotron flex">
         <h1 class="display-4">World of Warcraft </h1>
+        
       </div>
     </div>
     <div class="container">
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" id="spinner" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
+    
       <div class="row">
-        
         <div class="col-5 text-center" style="display: inline;">
           <div id='pie'></div>
           <div class="spinner-border" id="spinner1" role="status">
@@ -41,23 +37,23 @@
           </div>
     
         </div>
-      <div class="col" style="display: inline;">
-        <div class="card" style="display: none;">
+      <div class="col">
+        <div class="card" style="align-items:center; display: none;">
           <!--https://developer.snapappointments.com/bootstrap-select/examples/ cool tweaks for these drop downs-->
-          <div class="card_body m-4 mt-10">
-              <select class="selectpicker mb-3" data-width='90%' id="classfilter">
+          <div class="card_body m-4 mt-15">
+              <select class="selectpicker mb-3" data-width='100%' id="classfilter">
                 <option value="all">All Classes</option>
                 {% for value in classdicts[1:] %}
                 <option value="{{ value }}">{{ value }}</option>
                 {% endfor %}
               </select>
-              <select class="selectpicker mb-3" id="racefilter" data-width='90%' data-live-search="true">
+              <select class="selectpicker mb-3" id="racefilter" data-width='100%' data-live-search="true">
                 <option value="all">All Races</option>
                 {% for value in racedicts[1:] %}
                 <option value="{{ value }}">{{ value }}</option>
                 {% endfor %}
               </select>
-            <select class="selectpicker mb-3" id="specfilter" data-width='90%' data-live-search="true">
+            <select class="selectpicker mb-3" id="specfilter" data-width='100%' data-live-search="true">
               <option value="all">All Specs</option>
               {% for value in specdicts[1:] %}
               <option value="{{ value }}">{{ value }}</option>

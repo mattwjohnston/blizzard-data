@@ -55,7 +55,11 @@ function piechart(classname='allclasses') {
             visible:true,
             showlegend:true,
             responsive: true,
-            paper_bgcolor:'#272B30'
+            paper_bgcolor:'#272B30',
+            font: {
+                color: "#ffffff"
+            },
+            margin: {t:10}
         };
         $('#spinner').hide()
         $('#spinner1').hide()
