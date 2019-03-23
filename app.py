@@ -8,13 +8,10 @@ import requests
 from rauth import OAuth2Service
 from flask import Flask, Response, redirect, url_for, render_template, jsonify, session, request
 #can get rid of sqlalchemy if we dont implement any database storage
-from flask_sqlalchemy import SQLAlchemy
 #our own file imports
 from dicts import classdicts, specdicts, racedicts
-from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
 app.debug = True
 app.env='development'
 app.config['SECRET_KEY']= os.urandom(24)

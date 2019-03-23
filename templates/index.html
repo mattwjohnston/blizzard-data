@@ -22,20 +22,30 @@
 <body>
   
     <div class="container">
-      <div class="jumbotron flex">
+      <div class="jumbotron flex" style="padding-bottom:5px;">
         <h1 class="display-4">World of Warcraft </h1>
-        
+        <div class="col-md-3 offset-md-9">
+        <button class="btn btn-primary justify-content-right" type="button" data-toggle="collapse" data-target="#leaderboard" aria-expanded="false" aria-controls="collapseExample">
+            Leaderboard
+        </button>
+        </div>
       </div>
     </div>
-    <div class="container">
+
+    <div class="container collapse" id="leaderboard">
+        <div class="row" id="test2">
+          </div>
+    </div>
+  <div class="container" id="homepage">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     
       <div class="row">
-        <div class="col-5 text-center" style="display: inline;">
+        <div class="col-5">
           <div id='pie'></div>
-          <div class="spinner-border" id="spinner1" role="status">
-            <span class="sr-only align-center">Loading...</span>
-          </div>
-    
         </div>
       <div class="col">
         <div class="card" style="align-items:center; display: none;">
@@ -62,17 +72,16 @@
           </div>
         </div>
       </div>
+      
       <div class="col-4">
-          <div  class="spinner-border" id="spinner2" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
+          
                 <div id="charactersection">
                 </div>
       </div>
     </div> 
   </div> 
 
-
+  
 
 
 
