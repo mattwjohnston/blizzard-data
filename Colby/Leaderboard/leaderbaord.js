@@ -23,11 +23,11 @@ function character(datas) {
            <img src="/static/Resources/Class/${data.classId}.jpg" width="30" height="30"></img>
            <img src="/static/Resources/specialization/${data.classId}/${data.specId}.jpg" width="30" height="30"></img>
            <a href="https://worldofwarcraft.com/en-us/character/us/${data.realmSlug}/${data.name}" style="text-decoration: underline;color:black" target="_blank" rel="nofollow">${data.name} </a>
-           <p style="margin-left:10px">${data.tier} Tier</><img src="/static/Resources/tier/${data.tier}.png" width="30" height="30"></img>
+           <p style="margin-left:10px; color:black">${data.tier} Tier</><img src="/static/Resources/tier/${data.tier}.png" width="30" height="30"></img>
            </div>
            <div class="row" style="margin-left:20px">
            <img src="/static/Resources/faction/${data.factionId}.jpg" width="30" height="30"></img>
-           <p>Wins:${data.seasonWins} Played:${data.seasonWins + data.seasonLosses}</p>
+           <p style="color:black">Wins:${data.seasonWins} Played:${data.seasonWins + data.seasonLosses}</p>
            </div>`
       }
     )
