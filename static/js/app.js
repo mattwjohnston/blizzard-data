@@ -34,11 +34,10 @@ function character(datas) {
  }
 
 
-function piechart() {
-    const keys = Array();
-    const values = Array();
-
-    $.getJSON('/filter', {allclasses:'allclasses'}, function( data ) {
+function piechart(classname='allclasses') {
+    keys = Array();
+    values = Array();
+    $.getJSON('/filter', {classfilter:classname}, function( data ) {
         $.each( data, function( key, val ) {
             keys.push(key);
             values.push(val);
@@ -49,33 +48,21 @@ function piechart() {
             type: "pie"
         }];
         layout1 = {
-            title: "Character Class Breakdown",
-            autosize:true,
             visible:true,
             showlegend:true,
-            bgcolor:"rgb(41, 41, 41)",
             responsive: true
         };
-        Plotly.newPlot("pie", data1, layout1);
+        Plotly.newPlot("pie", data1, layout1, {bgcolor: "rgb(41, 41, 41)"});
     });
     
-}
-  
-function updatePlotly(newdata) {
-    var PIE = document.getElementById("pie");
-    Plotly.restyle(PIE, "values", [newdata]);
-}
-  
-function changeData(classfilter) {
-    dataset = $.getJSON('/filter', {classfilter:classfilter}, (data) => {return(data)});
-    updatePlotly(dataset);
-}
+}  
 
 $('#classfilter').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
-    $.getJSON('/filter', {classfilter:$(this).val()}, function(data) {
+    piechart($(this).val())});
+  /*  $.getJSON('/filter', {classfilter:$(this).val()}, function(data) {
         document.getElementById("filtertest").innerHTML = data;
-        changeData($('#classfilter').val());
-    })});      
+        changeData(data);
+    })});    */  
 $('#racefilter').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
     $.getJSON('/filter', {racefilter:$(this).val()}, function(data) {
         document.getElementById("filtertest").innerHTML = data;

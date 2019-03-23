@@ -55,6 +55,17 @@ def leaderboard():
 def filter():
     print('in filter route')
     df = data.a
+    if request.args.get('classfilter'):
+        classfilter=request.args.get('classfilter')
+        if classfilter == 'allclasses':
+            count = df.groupby(['classId']).size()
+            countdict = count.to_json()
+            return(countdict)
+        df = data.a
+        filteredDF = df.loc[df['classId'] == classfilter]
+        count = filteredDF.groupby(['raceId']).size()
+        countdict = count.to_json()
+        return(countdict)
     if request.args.get('allclasses'):
         count = df.groupby(['classId']).size()
         countdict = count.to_json()
@@ -65,13 +76,7 @@ def filter():
     if request.args.get('racefilter'):
         racefilter=request.args.get('racefilter')
         return(racefilter)
-    if request.args.get('classfilter'):
-        classfilter=request.args.get('classfilter')
-        df = data.a
-        filteredDF = df.loc[df['classId'] == classfilter]
-        count = filteredDF.groupby(['raceId']).size()
-        countdict = count.to_json()
-        return(countdict)
+   
     
 def get_community_token():
     data2 = {'grant_type': 'client_credentials'}
