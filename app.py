@@ -34,7 +34,7 @@ data = DataStore()
 
 @app.route('/')
 def index():
-    api_connect() #we only need this call if we want the community token a bit faster.  if we dont call it, leaderboard doesnt have it when its called.  Need to delay the leaderboard till this variable is filled
+    tokens['community'] = get_community_token()
     return(render_template('index.html', classdicts=list(classdicts.values()),
     racedicts=list(racedicts.values()), specdicts=list(specdicts.values())))
 
@@ -54,6 +54,11 @@ def leaderboard():
 @app.route('/filter')
 def filter():
     print('in filter route')
+    df = data.a
+    if request.args.get('allclasses'):
+        count = df.groupby(['classId']).size()
+        countdict = count.to_json()
+        return(countdict)
     if request.args.get('specfilter'):
         specfilter=request.args.get('specfilter')
         return(specfilter)
@@ -68,44 +73,11 @@ def filter():
         countdict = count.to_json()
         return(countdict)
     
-
-@app.route('/api_connect')
-def api_connect():
-    # There are two types of tokens.  session['community_token'] and session['profile_token']
-    # This route runs automatically at the homepage. the app.js file calls it.
-    tokens['community'] = get_community_token()
-    return(redirect(get_profile_authorization()))
-
-@app.route('/callback', methods=["GET"])
-def callback():
-    return(get_profile_token())
-
 def get_community_token():
     data2 = {'grant_type': 'client_credentials'}
     resp = oauth.get_access_token(data=data2, decoder=json.loads)
     print('COMMUNITY TOKEN:' + resp)
     return(resp)
-
-def get_profile_authorization():
-    authorization_url = oauth.get_authorize_url(
-        client_id=client_id,
-        state='ca',
-        scope='wow.profile',
-        redirect_uri=redirect_uri,
-        response_type='code')
-    return(authorization_url)
-
-def get_profile_token():
-    code = request.args.get('code')
-    data2 = {
-        'redirect_uri':redirect_uri,
-        'scope':'wow.profile',
-        'grant_type':'authorization_code',
-        'code':code}
-    resp = oauth.get_access_token(data=data2, decoder=json.loads)
-    tokens['profile'] = resp
-    print('PROFILE TOKEN:' + tokens['profile'])
-    return('',200)
 
 if __name__ == "__main__":
     app.run(debug=True)  
