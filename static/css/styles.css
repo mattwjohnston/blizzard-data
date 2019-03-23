@@ -7,20 +7,82 @@ header,
 }
 /* Navigation*/
 
-.navbar {
-    background-color: transparent;
+.view {
+    background: url("")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-
-.top-nav-collapse {
-    background-color: #2E2E2E;
+.ranking{
+    background: #A47225;
+    background: -moz-linear-gradient(-45deg, #A47225 0%, #EBA320 50%, #FFC825 100%);
+    background: -webkit-linear-gradient(-45deg, #A47225 0%, #EBA320 50%, #FFC825 100%);
+    background: linear-gradient(135deg, #A47225 0%, #EBA320 50%, #FFC825 100%);
+    display: inline-block;
+    margin-top: 2px;
+    border: 1px solid black;
 }
-
-@media only screen and (max-width: 768px) {
-    .navbar {
-        background-color: #2E2E2E;
-    }
+.rating{
+    display: inline-block;
 }
-
-.full-bg-img {
-    color: #fff;
-}
+.dk{
+    background-color:#c41e3b;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.dh{
+    background-color:#a330c9;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.druid{
+    background-color:#ff7c0a;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.hunter{
+    background-color:#aad372;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.mage{
+    background-color:#68ccef;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.monk{
+    background-color:#008467;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.paladin{
+    background-color:#f48cba;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.priest{
+    background-color:#fff;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.rogue{
+    background-color:#fff468;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.shaman{
+    background-color:#2359ff;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.warlock{
+    background-color:#9382c9;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+.warrior{
+    background-color:#c69b6d;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
