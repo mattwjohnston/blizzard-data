@@ -47,7 +47,7 @@ function character(datas) {
     .html(data => { return `<h4 class="ranking"><strong>Rank ${data.ranking}</strong></h4><h4 class="rating" style="margin-left:10px"><strong> Rating ${data.rating}</strong></h4><br>
           <div class="row" style="margin-left:20px">
            <img src="/static/Resources/Class/${data.classId}.jpg" width="30" height="30"></img>
-           <img src="/static/Resources/specialization/${data.classId}/${data.specId}.jpg" width="30" height="30"></img>
+           <img src="/static/Resources/Specialization/${data.classId}/${data.specId}.jpg" width="30" height="30"></img>
            <a href="https://worldofwarcraft.com/en-us/character/us/${data.realmSlug}/${data.name}" style="text-decoration: underline;color:black" target="_blank" rel="nofollow">${data.name} </a>
            <p style="margin-left:10px; color:black">${data.tier} Tier</><img src="/static/Resources/tier/${data.tier}.png" width="30" height="30"></img>
            </div>
