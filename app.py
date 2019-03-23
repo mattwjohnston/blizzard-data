@@ -76,7 +76,6 @@ def filter():
     if request.args.get('racefilter'):
         racefilter=request.args.get('racefilter')
         return(racefilter)
-   
     
 def get_community_token():
     data2 = {'grant_type': 'client_credentials'}

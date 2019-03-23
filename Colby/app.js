@@ -9,7 +9,7 @@ function leaderboard() {
         console.log(data);
         datas = data;
          //this isn't right i was just seeing what pulls over to the html
-         character(datas);
+        character(datas);
     });
 }
 

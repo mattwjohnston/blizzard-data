@@ -2,35 +2,37 @@
 window.onload = function start() {
     leaderboard();
 }
-datas = {};
+var datas;
 function leaderboard() {
     d3.json('/leaderboard').then((data) => {
-        datas+=data;
-        characters(datas);
+        datas=data;
+        character(datas);
         piechart();
     });
 }
 
 function character(datas) {
     console.log('Character function');
-     d3.select("#test2")
+     d3.select("#charactersection")
        .selectAll(".bio")
        .data(datas)
        .enter()
        .append(`div`)
        .html(data => { return `<h4 class="ranking"><strong>Rank ${data.ranking}</strong></h4><h4 class="rating" style="margin-left:10px"><strong> Rating ${data.rating}</strong></h4><br>
-             <div class="row">
+             <div class="row" style="margin-left:20px">
               <img src="/static/Resources/Class/${data.classId}.jpg" width="30" height="30"></img>
               <img src="/static/Resources/specialization/${data.classId}/${data.specId}.jpg" width="30" height="30"></img>
               <a href="https://worldofwarcraft.com/en-us/character/us/${data.realmSlug}/${data.name}" style="text-decoration: underline;color:black" target="_blank" rel="nofollow">${data.name} </a>
               <p style="margin-left:10px">${data.tier} Tier</><img src="/static/Resources/tier/${data.tier}.png" width="30" height="30"></img>
               </div>
-              <div class="row">
+              <div class="row" style="margin-left:20px">
               <img src="/static/Resources/faction/${data.factionId}.jpg" width="30" height="30"></img>
               <p>Wins:${data.seasonWins} Played:${data.seasonWins + data.seasonLosses}</p>
-              </div>`})
-       .attr("class", data => {return `${data.classId}`})
-       .classed("col-md-4", true);
+              </div>`
+         }
+       )
+       .attr("class", data => {return `${data.classId}`});
+       
  }
 
 
@@ -50,9 +52,10 @@ function piechart(classname='allclasses') {
         layout1 = {
             visible:true,
             showlegend:true,
-            responsive: true
+            responsive: true,
+            paper_bgcolor:'#272B30'
         };
-        Plotly.newPlot("pie", data1, layout1, {bgcolor: "rgb(41, 41, 41)"});
+        Plotly.newPlot("pie", data1, layout1);
     });
     
 }  
@@ -63,16 +66,13 @@ $('#classfilter').on('changed.bs.select', function (e, clickedIndex, isSelected,
         document.getElementById("filtertest").innerHTML = data;
         changeData(data);
     })});    */  
+
 $('#racefilter').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
     $.getJSON('/filter', {racefilter:$(this).val()}, function(data) {
-        document.getElementById("filtertest").innerHTML = data;
+        console.log(data);
     })});   
+
 $('#specfilter').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
     $.getJSON('/filter', {specfilter:$(this).val()}, function(data) {
-        document.getElementById("filtertest").innerHTML = data;
+        console.log(data);
     })});      
-
-function characters(data) {
-    document.getElementById("leaderboard").innerHTML = data;
-    $('.spinner-border').hide();
-};
